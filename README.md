@@ -1,2 +1,4 @@
 # tarantool-test
-testing tarantool issues
+
+## Segmentation fault
+make test

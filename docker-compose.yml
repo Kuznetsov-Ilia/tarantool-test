@@ -1,0 +1,15 @@
+version: '2'
+services:
+  tarantool:
+    image: tarantool/tarantool
+    volumes:
+      - ./backend:/opt/tarantool
+    command: sh -c "tarantool /usr/local/bin/tarantool-entrypoint.lua /opt/tarantool/app.lua"
+  nginx:
+    image: tarantool/tarantool-nginx
+    depends_on:
+      - tarantool
+    ports:
+      - 8080:8080
+    volumes:
+      - ./nginx:/etc/nginx
